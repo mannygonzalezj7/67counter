@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  font-family: "Impact", "Arial Black", sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #1a0022, #25004a);
+  background-size: 300% 300%;
+  animation: bgMove 8s infinite alternate;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+@keyframes bgMove {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+
+.title-glow {
+  font-size: 60px;
+  margin-top: 40px;
+  color: #ff2edb;
+  text-shadow: 0 0 20px #ff2edb, 0 0 40px #ff2edb;
+  animation: shake 1.2s infinite ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0px); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0px); }
+}
+
+.counter-glow {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #00f7ff;
+  text-shadow: 0 0 12px #00f7ff;
+  animation: pop 1.2s infinite;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 20px;
+}
+
+.container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+}
+
+video, canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  transform: scaleX(-1);
+}
+
+.aura {
+  box-shadow: 0 0 30px #9b00ff, 0 0 60px #a900ff;
+  border-radius: 20px;
+  animation: pulseAura 2.5s infinite alternate;
+}
+
+@keyframes pulseAura {
+  from { box-shadow: 0 0 20px #7a00cc; }
+  to   { box-shadow: 0 0 60px #d600ff; }
+}
+
+.side-panel h1.youare {
+  font-size: 40px;
+  color: #ffed4d;
+  text-shadow: 0 0 15px #fff45c;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.image {
+  width: 450px;
+  height: 450px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #00ffea;
+  object-fit: cover;
+  object-position: center;
+}
+
+@keyframes spinGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ✨ BUTTON ✨ */
+.btn-crazy {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 28px;
+  border: none;
+  border-radius: 12px;
+  background: #ff0095;
+  color: white;
+  text-shadow: 0 0 10px #000;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff00b7;
+  transition: 0.2s;
+}
+
+.btn-crazy:hover {
+  transform: scale(1.15) rotate(-3deg);
+  background: #ff3fd1;
+  box-shadow: 0 0 30px #ff00ea;
+}
+
+/* Position the container as relative so overlay sits over it */
+.container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+}
+
+/* Full-screen dim overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(0, 0, 0, 0.7); /* dark transparent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* ensure it sits above video/canvas */
+}
+
+/* Text styling */
+.overlay-text {
+  font-size: 3rem;
+  color: #ff4f9a;
+  font-weight: bold;
+  text-shadow: 0 0 20px #ff2edb;
+  animation: pop 1s infinite;
+}
+
