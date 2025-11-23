@@ -165,7 +165,7 @@ video, canvas {
   animation: pop 1s infinite;
 }
 
-#jumpscare {
+.jumpscare {
   width:100%;
   height:100%;
   object-fit: cover;
@@ -173,51 +173,58 @@ video, canvas {
   z-index: 9999;
 }
 
-/* Payment button (top-left) and modal styles (meme UI) */
+/* Payment modal & button (top-right) */
 .payment-button {
   position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 1500;
+  top: 16px;
+  right: 16px;
+  z-index: 2000;
   padding: 10px 14px;
-  font-size: 14px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #ff8a00, #ff3fd1);
+  font-size: 16px;
+  border-radius: 8px;
+  background: linear-gradient(180deg,#ff6bd6,#ff2edb);
   color: white;
   border: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
+
+.payment-button:hover { transform: translateY(-2px); }
 
 .payment-modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.6);
-  z-index: 2000;
+  z-index: 2500;
 }
 
 .payment-modal {
-  width: 380px;
-  background: linear-gradient(180deg, #10021a, #301230);
-  padding: 18px;
+  background: linear-gradient(180deg,#0f0020,#2a0038);
   border-radius: 12px;
+  padding: 20px;
+  width: 360px;
+  max-width: calc(100% - 32px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.6);
   color: #fff;
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
 .payment-input {
   width: 100%;
   padding: 10px 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #2b2b2b;
   margin-top: 8px;
-  background: #0f0c16;
-  color: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  color: white;
+  font-size: 14px;
 }
 
 .payment-error { color: #ff7b7b; margin-top: 8px; }
-.payment-success { color: #7bffb2; margin-top: 8px; }
+.payment-success { color: #7bffca; margin-top: 8px; }
