@@ -1,4 +1,4 @@
-#6 7 Counter
+# 6 7 Counter
 
 ## Inspiration
 We were talking about the 6 7 boba social, when we realized that we 6 7 a lot. We decided to use Mediapipe to track our 6 7'ing by identifying the positions of the elbows and wrists.
