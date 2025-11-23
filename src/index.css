@@ -49,3 +49,59 @@ h1 {
   line-height: 1.1;
 }
 
+progress {
+  width: 350px;
+  height: 20px;
+  border-radius: 10px;
+  appearance: none;
+  overflow: hidden;
+  background: #3a3a3a;
+}
+
+
+
+/* background */
+progress::-webkit-progress-bar {
+  background: #3a3a3a;
+}
+
+progress::-webkit-progress-value {
+  background: repeating-linear-gradient(
+    45deg,
+    #4ade80,
+    #4ade80 10px,
+    #22c55e 10px,
+    #22c55e 20px
+  );
+  animation: move 1s linear infinite;
+}
+
+@keyframes move {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.25s ease;
+}
+
+label {
+  font-size: 2em;
+}
+
+#video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0,0,0,0.6); /* optional dark fade */
+  display: none; /* hidden by default */
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999; /* sits above EVERYTHING */
+}

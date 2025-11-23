@@ -10,16 +10,37 @@ export default function PoseCounter() {
   const [count, setCount] = useState(0);
   const [showLandmarks, setShowLandmarks] = useState(false);
   const [imageSrc, setImageSrc] = useState("/kai.webp");
-  const [tooClose, setTooClose] = useState(false);
+  const [tooClose, setTooClose] = useState(false)
   const [imageName, setImageName] = useState("Kai Cenat")
   const [imagePoints, setImagePoints] = useState([])
+  const [maxProgress, setMaxProgress] = useState()
+  
 
   const forearmUp = useRef(false); // state that persists without re-renders
+  function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+  }
 
+  function showVideo() {
+    const overlay = document.getElementById("video-overlay");
+    const video = document.getElementById("popup-video");
+
+    overlay.style.display = "flex";        // show overlay
+    video.currentTime = 0;                 // restart video
+    video.play();
+
+    video.onended = () => {
+      overlay.style.display = "none";      // hide when done
+    };
+  }
+  
   useEffect(() => {
     const videoElement = videoRef.current;
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext("2d");
+
+    const jumpScareCount = getRandomInt(10);
+    const jumpScareElement = document.getElementById("NotAJumpscare.mp4")
 
     const pose = new Pose({
       locateFile: (file) =>
@@ -32,6 +53,8 @@ export default function PoseCounter() {
       minDetectionConfidence: 0.6,
       minTrackingConfidence: 0.6,
     });
+  
+    setMaxProgress(10);
 
     pose.onResults((results) => {
       canvasCtx.save();
@@ -80,13 +103,44 @@ export default function PoseCounter() {
             const newCount = prev + 1;
 
             // Image logic
-            if (newCount >= 67) {
+            if (newCount == jumpScareCount){
+              showVideo()
+            }
+            else if (newCount >= 6767) {
+              setImageName("Super 6 7")
+              setImageSrc("/super67.webp");
+              setMaxProgress("10000")
+            }
+            else if (newCount >= 1000) {
+                setImageName("Jonkler")
+              setImageSrc("/joker.webp");
+              setMaxProgress("6767")
+            }
+            else if (newCount >= 420) {
+                setImageName("Snoop DOgg")
+              setImageSrc("/snoop.jpg");
+              setMaxProgress("1000")
+            }
+            else if (newCount >= 305) {
+                setImageName("Mr. 305")
+              setImageSrc("/dale.jpg");
+              setMaxProgress("420")
+            }
+            else if (newCount >= 67) {
                 setImageName("6 7 Kid")
               setImageSrc("/sixseven.png");
+              setMaxProgress("305")
               
-            } else if (newCount >= 10) {
+            }
+            else if (newCount >= 23 ) {
+                setImageName("His Excellency")
+              setImageSrc("/legoat.png");
+              setMaxProgress("67")
+            }
+            else if (newCount >= 10) {
                 setImageName("IShowSpeed")
               setImageSrc("/speed.jpg");
+              setMaxProgress("23")
             }
 
             return newCount;
@@ -114,20 +168,36 @@ export default function PoseCounter() {
   }, [showLandmarks]);
 
   return (
+
     <div className="appContainer">
+
+      <div id="video-overlay">
+        <video id="popup-video" width="100%" height="100%">
+          <source src="NotAJumpscare.mp4" type="video/mp4"></source>
+        </video>
+      </div>
+
       <h1 className="title-glow">⁶🤷⁷ Counter</h1>
       <div className="counter-glow">Number of 67 Repetitions: {count}</div>
+
+      <div>
+      <h2 htmlFor="file">Progress to next character: </h2>
+      <progress id="file" value={count} max={maxProgress}></progress>
+      </div>
+
+      
 
       <div className="main">
         <div className="container aura">
           <video ref={videoRef} autoPlay playsInline className="video"></video>
           <canvas ref={canvasRef} width={640} height={480}></canvas>
 
+
           {tooClose && (
             <div className="overlay">
             <p className="overlay-text">Hands not visible</p>
         </div>
-  )}
+        )}
         </div>
 
         <div className="side-panel">
@@ -136,12 +206,17 @@ export default function PoseCounter() {
         </div>
       </div>
 
+      <audio controls autoPlay>
+        <source src="public/TheFatRat - Unity 4.mp3" type="audio/mpeg"></source>
+      </audio>
+
       <button
         className="btn-crazy"
         onClick={() => setShowLandmarks((prev) => !prev)}
       >
         Toggle Skeleton
       </button>
+
     </div>
   );
 }

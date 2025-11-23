@@ -165,3 +165,59 @@ video, canvas {
   animation: pop 1s infinite;
 }
 
+#jumpscare {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 9999;
+}
+
+/* Payment button (top-left) and modal styles (meme UI) */
+.payment-button {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1500;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff8a00, #ff3fd1);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.payment-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+}
+
+.payment-modal {
+  width: 380px;
+  background: linear-gradient(180deg, #10021a, #301230);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  color: #fff;
+}
+
+.payment-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #2b2b2b;
+  margin-top: 8px;
+  background: #0f0c16;
+  color: #fff;
+}
+
+.payment-error { color: #ff7b7b; margin-top: 8px; }
+.payment-success { color: #7bffb2; margin-top: 8px; }
